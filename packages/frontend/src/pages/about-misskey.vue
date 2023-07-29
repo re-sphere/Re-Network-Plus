@@ -7,7 +7,7 @@
 				<div v-panel class="about">
 					<div ref="containerEl" class="container" :class="{ playing: easterEggEngine != null }">
 						<img src="/client-assets/about-icon.png" alt="" class="icon" draggable="false" @load="iconLoaded" @click="gravity"/>
-						<div class="misskey">CherryPick</div>
+						<div class="misskey">Re⁺</div>
 						<div class="version">v{{ version }}</div>
 						<span v-for="emoji in easterEggEmojis" :key="emoji.id" class="emoji" :data-physics-x="emoji.left" :data-physics-y="emoji.top" :class="{ _physics_circle_: !emoji.emoji.startsWith(':') }">
 							<MkCustomEmoji v-if="emoji.emoji[0] === ':'" class="emoji" :name="emoji.emoji" :normal="true" :noStyle="true"/>
@@ -23,9 +23,9 @@
 					<MkButton primary rounded inline @click="iLoveCherryPick">I <Mfm text="$[jelly ❤]"/> #CherryPick</MkButton>
 				</div>
 				<FormSection v-if="isKokonect">
-					<template #label>_KOKONECT_</template>
+					<template #label>Xisskey.jp</template>
 					<div class="_formLinks">
-						<FormLink to="https://status.kokonect.link" external>
+						<FormLink to="https://status.resphere.net" external>
 							<template #icon><i class="ti ti-activity"></i></template>
 							{{ i18n.ts._aboutMisskey._kokonect.serverStatus }}
 							<template #suffix>Server Status</template>
@@ -33,9 +33,9 @@
 					</div>
 				</FormSection>
 				<FormSection>
-					<template #label>CherryPick</template>
+					<template #label>Re⁺</template>
 					<div class="_formLinks">
-						<FormLink to="https://github.com/kokonect-link/cherrypick" external>
+						<FormLink to="https://github.com/re-sphere/re-network-plus" external>
 							<template #icon><i class="ti ti-code"></i></template>
 							{{ i18n.ts._aboutMisskey.source }}
 							<template #suffix>GitHub</template>
@@ -145,6 +145,14 @@
 							<span :class="$style.contributorUsername">@noridev
 								<span :class="$style.contributorClient">
 									<span :class="$style.cherry">Cherry</span><span :class="$style.pick">Pick</span>
+								</span>
+							</span>
+						</a>
+						<a href="https://github.com/devaix" target="_blank" :class="$style.contributor">
+							<img src="https://avatars.githubusercontent.com/u/136943652?s=400&u=6519705f73607a0a88513c42777e2cfad7342bcd&v=4" :class="$style.contributorAvatar">
+							<span :class="$style.contributorUsername">@devaix
+								<span :class="$style.contributorClient">
+									<span :class="$style.cherry">Re</span><span :class="$style.pick">⁺</span>
 								</span>
 							</span>
 						</a>
