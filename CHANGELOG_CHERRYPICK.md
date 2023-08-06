@@ -1,7 +1,7 @@
 <!--
-## 13.x.x-cp-4.x.x
+## 2023.x.x-cp-4.x.x
 출시일: unreleased<br>
-전체 변경 사항을 확인하려면, [CHANGELOG.md#13xx](CHANGELOG.md#13xx) 문서를 참고하십시오.
+전체 변경 사항을 확인하려면, [CHANGELOG.md#2023xx](CHANGELOG.md#2023xx) 문서를 참고하십시오.
 
 ## NOTE
 
@@ -19,11 +19,30 @@
 -->
 
 # 릴리즈 노트
-
 이 문서는 CherryPick의 변경 사항만 포함합니다.
 
-## 13.14.2-cp-4.2.0
+## 2023.x.x-cp-4.x.x
 출시일: unreleased<br>
+전체 변경 사항을 확인하려면, [CHANGELOG.md#2023xx](CHANGELOG.md#2023xx) 문서를 참고하십시오.
+
+### General
+- 스크롤 시 요소 표시(헤더, 플로팅 버튼, 탐색 모음)를 사용자화 할 수 있는 옵션 추가
+
+### Client
+- 이모티콘 피커의 검색 건수를 100개로 증가 (misskey-dev/misskey#11371)
+- about-misskey 페이지에서 클라이언트 버전을 누르면 변경 사항을 볼 수 있음
+- Fix: (Friendly) 흐림 효과를 사용할 때 하단 내비게이션 바의 가독성이 매우 떨어지는 문제
+- Fix: 움직임이 있는 MFM 설정을 사용하지 않아도 `$[rainbow ]`문자를 볼 수 있음 (misskey-dev/misskey#11361)
+- Fix: 모바일에서 헤더의 디자인을 변경하면 흐림 효과가 강제됨
+- Fix: 환경설정 백업 시 일부 설정이 누락되어 백업되는 문제
+
+### Server
+- Fix: 실행 중인 앱 내에서 ServerStatsService 시작 (misskey-dev/misskey#11342)
+
+---
+
+## 13.14.2-cp-4.2.0
+출시일: 2023/07/29<br>
 전체 변경 사항을 확인하려면, [CHANGELOG.md#13142](CHANGELOG.md#13142) 문서를 참고하십시오.
 
 ### General
@@ -69,6 +88,7 @@
 - Fix: 프로필 아이콘이 투명일 때 노트 답글선이 비치는 문제
 - Fix: 서브 노트의 내용 숨김 버튼의 디자인이 잘못 표시되는 문제
 - Fix: 「좋아요만 받기」로 설정된 노트에서 리액션 버튼이 여러 개 표시되는 문제
+- Fix: 「좋아요만 받기」로 설정된 노트에서 좋아요를 취소하려고 할 때 아이콘이 잘못 표시되는 문제
 
 ### Server
 - 미디어 타임라인 개선

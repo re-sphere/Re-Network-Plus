@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: syuilo and other misskey, cherrypick contributors
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 import { markRaw, ref } from 'vue';
 import { Storage } from './pizzax';
 
@@ -343,18 +348,6 @@ export const defaultStore = markRaw(new Storage('base', {
 
 	// #region CherryPick
 	// - Settings/General
-	useEnterToSend: {
-		where: 'device',
-		default: false,
-	},
-	postFormVisibilityHotkey: {
-		where: 'device',
-		default: true,
-	},
-	showRenoteConfirmPopup: {
-		where: 'device',
-		default: true,
-	},
 	newNoteReceivedNotificationBehavior: {
 		where: 'device',
 		default: 'count' as 'default' | 'count' | 'none',
@@ -362,14 +355,6 @@ export const defaultStore = markRaw(new Storage('base', {
 	fontSize: {
 		where: 'device',
 		default: 8,
-	},
-	friendlyEnableNotifications: {
-		where: 'device',
-		default: true,
-	},
-	friendlyEnableWidgets: {
-		where: 'device',
-		default: true,
 	},
 	collapseDefault: {
 		where: 'account',
@@ -451,6 +436,22 @@ export const defaultStore = markRaw(new Storage('base', {
 		where: 'account',
 		default: {} as Record<string, string>,
 	},
+	useEnterToSend: {
+		where: 'device',
+		default: false,
+	},
+	postFormVisibilityHotkey: {
+		where: 'device',
+		default: true,
+	},
+	showRenoteConfirmPopup: {
+		where: 'device',
+		default: true,
+	},
+	displayHeaderNavBarWhenScroll: {
+		where: 'device',
+		default: 'hideHeaderFloatBtn' as 'all' | 'hideHeaderOnly' | 'hideHeaderFloatBtn' | 'hideFloatBtnOnly' | 'hideFloatBtnNavBar' | 'hide',
+	},
 	infoButtonForNoteActionsEnabled: {
 		where: 'account',
 		default: true,
@@ -474,6 +475,16 @@ export const defaultStore = markRaw(new Storage('base', {
 	mobileTimelineHeaderChange: {
 		where: 'device',
 		default: false,
+	},
+
+	// - etc
+	friendlyEnableNotifications: {
+		where: 'device',
+		default: true,
+	},
+	friendlyEnableWidgets: {
+		where: 'device',
+		default: true,
 	},
 	// #endregion
 }));

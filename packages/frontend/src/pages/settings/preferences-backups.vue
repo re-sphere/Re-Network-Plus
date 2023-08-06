@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: syuilo and other misskey, cherrypick contributors
+SPDX-License-Identifier: AGPL-3.0-only
+-->
+
 <template>
 <div class="_gaps_m">
 	<div :class="$style.buttons">
@@ -82,18 +87,36 @@ const defaultStoreSaveKeys: (keyof typeof defaultStore['state'])[] = [
 	'reactionPickerUseDrawerForMobile',
 	'defaultSideView',
 	'menuDisplay',
-	'bannerDisplay',
 	'reportError',
 	'squareAvatars',
 	'hideAvatarsInNote',
 	'numberOfPageCache',
 	'aiChanMode',
 	'mediaListWithOneImageAppearance',
-	'useEnterToSend',
-	'postFormVisibilityHotkey',
 	'newNoteReceivedNotificationBehavior',
 	'collapseDefault',
 	'requireRefreshBehavior',
+	'bannerDisplay',
+	'hideAvatarsInNote',
+	'showTranslateButtonInNote',
+	'enableAbsoluteTime',
+	'enableMarkByDate',
+	'showSubNoteFooterButton',
+	'enableHomeTimeline',
+	'enableLocalTimeline',
+  'enableMediaTimeline',
+  'enableSocialTimeline',
+  'enableCatTimeline',
+  'enableGlobalTimeline',
+  'enableListTimeline',
+  'enableAntennaTimeline',
+  'enableChannelTimeline',
+	'useEnterToSend',
+	'postFormVisibilityHotkey',
+  'showRenoteConfirmPopup',
+  'displayHeaderNavBarWhenScroll',
+  'showPostFormPreview',
+  'mobileTimelineHeaderChange',
 ];
 const coldDeviceStorageSaveKeys: (keyof typeof ColdDeviceStorage.default)[] = [
 	'lightTheme',

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: syuilo and noridev and other misskey, cherrypick contributors
+SPDX-License-Identifier: AGPL-3.0-only
+-->
+
 <template>
 <div class="_gaps_m">
 	<FormSection first>
@@ -23,6 +28,18 @@
 					<template #label>{{ i18n.ts.showRenoteConfirmPopup }}</template>
 				</MkSwitch>
 			</div>
+
+      <div>
+        <MkRadios v-model="displayHeaderNavBarWhenScroll">
+          <template #label>{{ i18n.ts.displayHeaderNavBarWhenScroll }}</template>
+          <option value="all">{{ i18n.ts._displayHeaderNavBarWhenScroll.all }}</option>
+          <option value="hideHeaderOnly">{{ i18n.ts._displayHeaderNavBarWhenScroll.hideHeaderOnly }}</option>
+          <option value="hideHeaderFloatBtn">{{ i18n.ts._displayHeaderNavBarWhenScroll.hideHeaderFloatBtn }}</option>
+          <option value="hideFloatBtnOnly">{{ i18n.ts._displayHeaderNavBarWhenScroll.hideFloatBtnOnly }}</option>
+          <option value="hideFloatBtnNavBar">{{ i18n.ts._displayHeaderNavBarWhenScroll.hideFloatBtnNavBar }}</option>
+          <option value="hide">{{ i18n.ts._displayHeaderNavBarWhenScroll.hide }}</option>
+        </MkRadios>
+      </div>
 		</div>
 	</FormSection>
 	<FormSection>
@@ -46,6 +63,7 @@
 <script lang="ts" setup>
 import { computed, watch } from 'vue';
 import MkSwitch from '@/components/MkSwitch.vue';
+import MkRadios from '@/components/MkRadios.vue';
 import FormSection from '@/components/form/section.vue';
 import { defaultStore } from '@/store';
 import * as os from '@/os';
@@ -72,6 +90,7 @@ const reactableRemoteReactionEnabled = computed(defaultStore.makeGetterSetter('r
 const rememberPostFormToggleStateEnabled = computed(defaultStore.makeGetterSetter('rememberPostFormToggleStateEnabled'));
 const showFollowingMessageInsteadOfButtonEnabled = computed(defaultStore.makeGetterSetter('showFollowingMessageInsteadOfButtonEnabled'));
 const mobileTimelineHeaderChange = computed(defaultStore.makeGetterSetter('mobileTimelineHeaderChange'));
+const displayHeaderNavBarWhenScroll = computed(defaultStore.makeGetterSetter('displayHeaderNavBarWhenScroll'));
 
 watch([
 	infoButtonForNoteActionsEnabled,

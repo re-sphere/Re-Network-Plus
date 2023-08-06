@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: syuilo and other misskey, cherrypick contributors
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 import { VNode, h } from 'vue';
 import * as mfm from 'cherrypick-mfm-js';
 import * as Misskey from 'cherrypick-js';
@@ -171,8 +176,13 @@ export default function(props: {
 						}, genEl(token.children, scale));
 					}
 					case 'rainbow': {
+						if (!useAnim) {
+							return h('span', {
+								class: '_mfm_rainbow_fallback_',
+							}, genEl(token.children, scale));
+						}
 						const speed = validTime(token.props.args.speed) ?? '1s';
-						style = useAnim ? `animation: mfm-rainbow ${speed} linear infinite;` : '';
+						style = `animation: mfm-rainbow ${speed} linear infinite;`;
 						break;
 					}
 					case 'sparkle': {

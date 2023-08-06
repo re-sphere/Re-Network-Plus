@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: syuilo and noridev and other misskey, cherrypick contributors
+SPDX-License-Identifier: AGPL-3.0-only
+-->
+
 <template>
 <div v-if="show" ref="el" :class="[$style.root, {[$style.slim]: narrow, [$style.thin]: thin_, [$style.reduceBlurEffect]: !defaultStore.state.useBlurEffect }]" :style="{ background: bg }">
 	<div v-if="!thin_ && !canBack" :class="$style.buttonsLeft">
@@ -45,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref, inject, watch, nextTick, onBeforeUnmount } from 'vue';
+import { onMounted, onUnmounted, ref, inject, watch, nextTick } from 'vue';
 import tinycolor from 'tinycolor2';
 import { getScrollPosition, scrollToTop } from '@/scripts/scroll';
 import { globalEvents } from '@/events';
@@ -55,7 +60,7 @@ import { miLocalStorage } from '@/local-storage';
 import { mainRouter } from '@/router';
 import * as os from '@/os';
 import { i18n } from '@/i18n';
-import {defaultStore} from "@/store";
+import { defaultStore } from '@/store';
 
 const isFriendly = ref(miLocalStorage.getItem('ui') === 'friendly');
 const canBack = ref(['index', 'explore', 'my-notifications', 'messaging'].includes(<string>mainRouter.currentRoute.value.name));
@@ -92,7 +97,7 @@ const metadata = injectPageMetadata();
 const hideTitle = inject('shouldOmitHeaderTitle', false);
 const thin_ = props.thin || inject('shouldHeaderThin', false);
 
-const el = $shallowRef<HTMLElement | undefined>(undefined);
+let el = $shallowRef<HTMLElement | undefined>(undefined);
 const tabRefs: Record<string, HTMLElement | null> = {};
 const tabHighlightEl = $shallowRef<HTMLElement | null>(null);
 const bg = ref<string | undefined>(undefined);
@@ -123,26 +128,26 @@ const preventDrag = (ev: TouchEvent) => {
 	ev.stopPropagation();
 };
 
+const top = (ev: MouseEvent) => {
+  const pos = getScrollPosition(el as HTMLElement);
+  if (el && pos !== 0) {
+    scrollToTop(el as HTMLElement, { behavior: 'smooth' });
+  } else if (pos === 0) {
+    os.popupMenu([{
+      text: i18n.ts.reload,
+      icon: 'ti ti-refresh',
+      action: () => {
+        location.reload();
+      },
+    }], ev.currentTarget ?? ev.target);
+  }
+};
+
 function openAccountMenu(ev: MouseEvent) {
 	openAccountMenu_({
 		withExtraOperation: true,
 	}, ev);
 }
-
-const top = (ev: MouseEvent) => {
-	const pos = getScrollPosition(el as HTMLElement);
-	if (el && pos !== 0) {
-		scrollToTop(el as HTMLElement, { behavior: 'smooth' });
-	} else if (pos === 0) {
-		os.popupMenu([{
-			text: i18n.ts.reload,
-			icon: 'ti ti-refresh',
-			action: () => {
-				location.reload();
-			},
-		}], ev.currentTarget ?? ev.target);
-	}
-};
 
 function onTabMousedown(tab: Tab, ev: MouseEvent): void {
 	// ユーザビリティの観点からmousedown時にはonClickは呼ばない
@@ -167,19 +172,16 @@ function goBack() {
 }
 
 const calcBg = () => {
-	const rawBg = metadata?.bg || 'var(--bg)';
-	const tinyBg = tinycolor(rawBg.startsWith('var(') ? getComputedStyle(document.documentElement).getPropertyValue(rawBg.slice(4, -1)) : rawBg);
-	if (narrow) tinyBg.setAlpha(1);
-	else tinyBg.setAlpha(0.85);
-	bg.value = tinyBg.toRgbString();
+  const rawBg = 'var(--bg)';
+  const tinyBg = tinycolor(rawBg.startsWith('var(') ? getComputedStyle(document.documentElement).getPropertyValue(rawBg.slice(4, -1)) : rawBg);
+  if (narrow) tinyBg.setAlpha(1);
+  else tinyBg.setAlpha(0.85);
+  bg.value = tinyBg.toRgbString();
 };
 
 let ro: ResizeObserver | null;
 
 onMounted(() => {
-	calcBg();
-	globalEvents.on('themeChanged', calcBg);
-
 	watch(() => [props.tab, props.tabs], () => {
 		nextTick(() => {
 			const tabEl = props.tab ? tabRefs[props.tab] : undefined;
@@ -205,6 +207,9 @@ onMounted(() => {
 		});
 		ro.observe(el.parentElement as HTMLElement);
 	}
+
+  calcBg();
+  globalEvents.on('themeChanged', calcBg);
 });
 
 onUnmounted(() => {

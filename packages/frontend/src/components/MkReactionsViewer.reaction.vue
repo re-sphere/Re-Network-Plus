@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: syuilo and other misskey, cherrypick contributors
+SPDX-License-Identifier: AGPL-3.0-only
+-->
+
 <template>
 <button
 	ref="buttonEl"
@@ -161,15 +166,13 @@ useTooltip(buttonEl, async (showing) => {
 		}
 	}
 
-	&.reacted {
-		background: var(--accent);
-
-		&:hover {
-			background: var(--accent);
-		}
+	&.reacted, &.reacted:hover {
+    background: var(--accentedBg);
+    color: var(--accent);
+    border: 1px solid var(--accent);
 
 		> .count {
-			color: var(--fgOnAccent);
+			color: var(--accent);
 		}
 
 		> .icon {
