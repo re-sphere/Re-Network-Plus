@@ -82,7 +82,7 @@ export class NodeinfoServerService {
 
 			return {
 				software: {
-					name: 'Re⁺',
+					name: 'Re＋',
 					version: this.config.version,
 					repository: meta.repositoryUrl,
 				},
