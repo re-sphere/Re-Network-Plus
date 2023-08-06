@@ -25,10 +25,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 					{{ i18n.ts._aboutMisskey.about }}<br><a href="https://misskey-hub.net/docs/misskey.html" target="_blank" class="_link">{{ i18n.ts.learnMore }}</a>
 				</div>
 				<div v-if="$i != null" style="text-align: center;">
-					<MkButton primary rounded inline @click="iLoveCherryPick">I <Mfm text="$[jelly ❤]"/> #CherryPick</MkButton>
+					<MkButton primary rounded inline @click="iLoveCherryPick">I <Mfm text="$[jelly ❤]"/> #Re⁺</MkButton>
 				</div>
 				<FormSection v-if="isKokonect">
-					<template #label>Xisskey.jp</template>
+					<template #label>xisskey.net</template>
 					<div class="_formLinks">
 						<FormLink to="https://status.resphere.net" external>
 							<template #icon><i class="ti ti-activity"></i></template>
@@ -52,7 +52,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 							<template #suffix>Crowdin</template>
 						</FormLink>
 						-->
-						<FormLink to="https://discord.gg/V8qghB28Aj" external>
+						<FormLink to="https://discord.gg/jXJ8xjDF9R" external>
 							<template #icon><i class="ti ti-brand-discord"></i></template>
 							{{ i18n.ts._aboutMisskey._cherrypick.community }}
 							<template #suffix>Discord</template>
