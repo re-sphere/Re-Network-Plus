@@ -6,8 +6,8 @@
 export class AddSomeUrls1557761316509 {
     async up(queryRunner) {
         await queryRunner.query(`ALTER TABLE "meta" ADD "ToSUrl" character varying(512)`);
-        await queryRunner.query(`ALTER TABLE "meta" ADD "repositoryUrl" character varying(512) NOT NULL DEFAULT 'https://github.com/kokonect-link/cherrypick'`);
-        await queryRunner.query(`ALTER TABLE "meta" ADD "feedbackUrl" character varying(512) DEFAULT 'https://github.com/kokonect-link/cherrypick/issues/new'`);
+        await queryRunner.query(`ALTER TABLE "meta" ADD "repositoryUrl" character varying(512) NOT NULL DEFAULT 'https://github.com/re-sphere/re-network-plus'`);
+        await queryRunner.query(`ALTER TABLE "meta" ADD "feedbackUrl" character varying(512) DEFAULT 'https://github.com/re-sphere/re-network-plus/issues/new'`);
     }
     async down(queryRunner) {
         await queryRunner.query(`ALTER TABLE "meta" DROP COLUMN "feedbackUrl"`);
