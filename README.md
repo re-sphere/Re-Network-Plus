@@ -1,3 +1,4 @@
+※このリポジトリはメンテナンスされていません。 Fork元 https://github.com/kokonect-link/cherrypick をご利用ください。※re-network-plusとFork元のリポジトリは関係ありません。
 <div align="center">
 <a href="https://misskey-hub.net">
 	<img src="./assets/title_float_cherrypick.svg" alt="Xisskeyのロゴ" width="400"/>
